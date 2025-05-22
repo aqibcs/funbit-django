@@ -24,6 +24,10 @@ from funbit import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('challenges/', include('challenges.urls')),
+    path('submissions/', include('submissions.urls')),
+    path('', include('challenges.urls')),
+    path('__reload__/', include('django_browser_reload.urls')),
 ]
 
 # Serve media files in development

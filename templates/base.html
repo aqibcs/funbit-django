@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}FunBit{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     {% block extra_head %}{% endblock %}
 </head>
@@ -13,10 +14,13 @@
     <header class="bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md">
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
+                <a href="{% url 'home' %}" class="flex items-center">
                     <span class="text-2xl font-bold">FunBit</span>
                     <span class="ml-2 text-sm bg-yellow-400 text-purple-900 px-2 py-1 rounded-full">Daily Challenges</span>
                 </a>
                 <nav class="hidden md:flex space-x-6">
+                    <a href="{% url 'home' %}" class="hover:text-yellow-300 transition">Home</a>
+                    <a href="{% url 'leaderboard' %}" class="hover:text-yellow-300 transition">Leaderboard</a>
                     {% if user.is_authenticated %}
                         <a href="{% url 'profile' %}" class="hover:text-yellow-300 transition">Profile</a>
                         <form action="{% url 'logout' %}" method="post" class="inline">
@@ -33,6 +37,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                     <div x-show="open" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                        <a href="{% url 'home' %}" class="block px-4 py-2 text-gray-800 hover:bg-purple-100">Home</a>
+                        <a href="{% url 'leaderboard' %}" class="block px-4 py-2 text-gray-800 hover:bg-purple-100">Leaderboard</a>
                         {% if user.is_authenticated %}
                             <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-purple-100">Profile</a>
                         {% else %}
